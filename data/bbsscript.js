@@ -43,7 +43,8 @@ const rennderComments = function (comments) {
                     `).join('') : ''}
                 </div>
                 <div class="reply-form" style="display:none;">
-                    <input type="text" class="reply-input" placeholder="回复...">
+                    <input type="text" class="reply-name-input" placeholder="请输入您的姓名" />
+                    <input type="text" class="reply-input" placeholder="回复..." />
                     <button class="btn-submit-reply">提交回复</button>
                 </div>
             </div>`
@@ -82,7 +83,9 @@ const rennderComments = function (comments) {
         button.onclick = function () {
             const commentDiv = button.closest(".comment");
             const index = parseInt(commentDiv.getAttribute("data-index"));
+            const replyNameInput = commentDiv.querySelector(".reply-name-input");
             const replyInput = commentDiv.querySelector(".reply-input");
+            const replyName = replyNameInput.value.trim() || "匿名"; // Default to "匿名" if no name is entered
             const replyText = replyInput.value.trim();
             
             if (replyText === "") {
@@ -91,7 +94,7 @@ const rennderComments = function (comments) {
             }
 
             const reply = {
-                name: "匿名",  // 默认回复者为匿名
+                name: replyName,  // Use the entered name
                 comment: replyText,
                 time: new Date().toLocaleString(),
             };
