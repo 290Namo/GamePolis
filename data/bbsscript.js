@@ -4,6 +4,9 @@ let commentInput = document.querySelector("#comment");
 const btnSubmit = document.querySelector("#btn-submit");
 const btnClose = document.querySelector(".btn-close");
 
+// 用户身份验证（此处使用简单的密码验证）
+const adminPassword = "yourPassword"; // 设置一个简单的密码，用于身份验证
+
 // Function to save comments to localStorage
 const saveCommentsToLocalStorage = function (comments) {
     localStorage.setItem("comments", JSON.stringify(comments));
@@ -19,7 +22,7 @@ const loadCommentsFromLocalStorage = function () {
 let comments = loadCommentsFromLocalStorage();
 
 // Function to render comments
-const rennderComments = function (comments) {
+const renderComments = function (comments) {
     commentsBox.innerHTML = ""; // Clear comments box
     comments.forEach((item, index) => {
         commentsBox.insertAdjacentHTML(
@@ -41,15 +44,23 @@ const rennderComments = function (comments) {
     deleteButtons.forEach((button) => {
         button.onclick = function () {
             const index = parseInt(button.getAttribute("data-index"));
-            comments.splice(index, 1); // Remove comment from array
-            saveCommentsToLocalStorage(comments); // Update localStorage
-            rennderComments(comments); // Re-render comments
+
+            // Prompt for password verification before deleting
+            const password = prompt("请输入密码以删除评论：");
+
+            if (password === adminPassword) {
+                comments.splice(index, 1); // Remove comment from array
+                saveCommentsToLocalStorage(comments); // Update localStorage
+                renderComments(comments); // Re-render comments
+            } else {
+                alert("密码错误，无法删除评论！");
+            }
         };
     });
 };
 
 // Render comments on page load
-rennderComments(comments);
+renderComments(comments);
 
 btnSubmit.onclick = function () {
     const nameStr = nameInput.value.trim();
@@ -72,7 +83,7 @@ btnSubmit.onclick = function () {
     saveCommentsToLocalStorage(comments);
 
     // Re-render comments
-    rennderComments(comments);
+    renderComments(comments);
 
     // Clear input fields
     nameInput.value = "";
@@ -93,6 +104,7 @@ btnClose.onclick = function () {
     btnSubmit.disabled = !btnSubmit.disabled;
     isClosed = !isClosed;
 };
+
 
 
 
