@@ -34,7 +34,11 @@ const renderComments = function (comments) {
                     <span class="date">${item.time}</span>
                 </h4>
                 <p>${item.comment}</p>
+                <button class="btn-reply" data-index="${index}">回复</button>
                 <button class="btn-delete" data-index="${index}">删除</button>
+                <div class="replies" id="replies-${index}">
+                    ${item.replies ? renderReplies(item.replies, index) : ''}
+                </div>
             </div>`
         );
     });
@@ -57,6 +61,46 @@ const renderComments = function (comments) {
             }
         };
     });
+
+    // Add event listeners to reply buttons
+    const replyButtons = document.querySelectorAll(".btn-reply");
+    replyButtons.forEach((button) => {
+        button.onclick = function () {
+            const index = parseInt(button.getAttribute("data-index"));
+            const replyText = prompt("请输入回复内容：");
+
+            if (replyText) {
+                // Sanitize reply content
+                const sanitizedReply = replyText.replace(/<(\/?\w+)>/g, "&lt;$1&gt;");
+
+                // Add the reply to the comments array
+                comments[index].replies = comments[index].replies || [];
+                comments[index].replies.push({
+                    name: nameInput.value.trim(),
+                    reply: sanitizedReply,
+                    time: new Date().toLocaleString(),
+                });
+
+                // Save updated comments to localStorage
+                saveCommentsToLocalStorage(comments);
+
+                // Re-render comments
+                renderComments(comments);
+            }
+        };
+    });
+};
+
+// Function to render replies of a comment
+const renderReplies = function (replies, commentIndex) {
+    return replies
+        .map((reply) => {
+            return `<div class="reply">
+                        <h5>${reply.name} <span class="date">${reply.time}</span></h5>
+                        <p>${reply.reply}</p>
+                    </div>`;
+        })
+        .join('');
 };
 
 // Render comments on page load
@@ -77,6 +121,7 @@ btnSubmit.onclick = function () {
         name: nameStr.replace(/<(\/?\w+)>/g, "&lt;$1&gt;"),
         comment: commentStr.replace(/<(\/?\w+)>/g, "&lt;$1&gt;"),
         time: new Date().toLocaleString(),
+        replies: [], // Initialize empty replies array
     });
 
     // Save updated comments to localStorage
@@ -104,6 +149,7 @@ btnClose.onclick = function () {
     btnSubmit.disabled = !btnSubmit.disabled;
     isClosed = !isClosed;
 };
+
 
 
 
