@@ -3,7 +3,7 @@ let nameInput = document.querySelector("#name");
 let commentInput = document.querySelector("#comment");
 const btnSubmit = document.querySelector("#btn-submit");
 const btnClose = document.querySelector(".btn-close");
-const password = "123456";  // 预设的删除密码
+const password = "NikumaruNamo290";  // 预设的删除密码
 
 // Function to save comments to localStorage
 const saveCommentsToLocalStorage = function (comments) {
@@ -43,7 +43,7 @@ const rennderComments = function (comments) {
                     `).join('') : ''}
                 </div>
                 <div class="reply-form" style="display:none;">
-                    <input type="text" class="reply-name-input" placeholder="请输入您的姓名" />
+                    <input type="text" class="reply-name-input" placeholder="输入您的姓名" />
                     <input type="text" class="reply-input" placeholder="回复..." />
                     <button class="btn-submit-reply">提交回复</button>
                 </div>
