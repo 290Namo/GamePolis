@@ -1,10 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  ...
-  <script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
-  <script src="//cdn.ihoey.com/Hitalk.min.js"></script>
-  ...
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  ...
-  <div id="comment"></div>
+    <div class="container">
+        <div class="comment-box">
+            <button class="btn-close">关闭留言</button>
+            <div class="comment-form">
+                <div class="header">留言板</div>
+                <div>
+                    <input type="text" id="name" placeholder="输入您的姓名">
+                </div>
+                <div>
+                    <textarea name="" id="comment" cols="30" rows="3" placeholder="输入您的留言"></textarea>
+                </div>
+                <button id="btn-submit">留言</button>
+            </div>
+            <div>
+                <h4 class="header">留言列表</h4>
+                <div id="comments">
+                    <hr>
+                    <h4>
+                        <span>姓名</span>
+                        <span class="date">日期</span>
+                    </h4>
+                    <p>留言内容1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
 </body>
+</html>
