@@ -31,7 +31,7 @@ const rennderComments = function (comments) {
                     <span class="date">${item.time}</span>
                 </h4>
                 <p>${item.comment}</p>
-                <button class="btn-delete" data-index="${index}">删除</button>
+                //<button class="btn-delete" data-index="${index}">删除</button>
             </div>`
         );
     });
@@ -80,7 +80,7 @@ btnSubmit.onclick = function () {
 };
 
 let isClosed = false;
-btnClose.onclick = function () {
+//btnClose.onclick = function () {
     if (!isClosed) {
         btnClose.textContent = "开启留言";
     } else {
