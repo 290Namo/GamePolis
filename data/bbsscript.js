@@ -19,53 +19,6 @@ const loadCommentsFromLocalStorage = function () {
 let comments = loadCommentsFromLocalStorage();
 
 // Function to render comments
-<script src="https://new.hkems-stmo.top/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://new.hkems-stmo.top/css/bootstrap.min.css" />
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--调用需要的框架文件-->
- 
-<div class="container">
-  <div class="row">
-    <div id="overlayverify" style="display: block;">
-      <!--建立遮罩层挡住内容-->
- 
-      <div class="col-sm-2 col-lg-4"></div>
-      <!--bootstarp框架，用于调节样式-->
- 
-      <div class="popup col-sm-8 col-lg-4">
-        <!--建立一个模态框-->
- 
-        <p class="popup_title">统一身份验证验证</p>
-        <p class="popup_content overflow-auto" style="line-height: 40px;">欢迎访问科技社规划备忘录，在进行浏览前，我们需要验证你的身份。</p>
-        <!--说明-->
- 
-        <form name="AandP" style="margin-top: -20%;">
-          <!--建立名为AandP的表单（Account and Password），容纳用户输入进输入框的内容-->
- 
-          <input class="form-control signinput" id="account" placeholder="请输入账号："
-            style="width: 80%;margin-left: 10%;margin-bottom: 15px;" />
-          <input class="form-control" id="password" type="password" placeholder="请输入密码"
-            style="width: 80%;margin-left: 10%;margin-bottom: 10px;" />
-          <!--分别设置了账号密码的输入框，各自用id="xxx"来标识-->
-        </form>
- 
-        <div id="out" style="color: red;"></div>
-        <!--建立一个id为out的输出反馈的div，登陆失败等信息被写入到这-->
- 
-        <div class="popup_line"></div>
-        <div class="popup_btn" style="margin-top: -20px;">
-          <button class="cancelBtn ds overflow-hidden" onclick="dontknow()">我不知道密码</button>
-          <button class="confirmBtn ag overflow-hidden" onclick="verify()">验证并访问</button>
-          <!--用onclick绑定函数，点击按钮运行onclick指定的函数-->
- 
-        </div>
-      </div>
-      <div class="col-sm-2 col-lg-4"></div>
-      <!--bootstarp框架，用于调节样式-->
-    </div>
-  </div>
-</div>
-<div>
 const rennderComments = function (comments) {
     commentsBox.innerHTML = ""; // Clear comments box
     comments.forEach((item, index) => {
@@ -82,7 +35,6 @@ const rennderComments = function (comments) {
             </div>`
         );
     });
-    </div>
 
     // Add event listeners to delete buttons
     const deleteButtons = document.querySelectorAll(".btn-delete");
