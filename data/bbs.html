@@ -1,54 +1,17 @@
-<html>
 <head>
-<!-- #BeginEditable "doctitle" -->
-<title>290[bbs]</title>
-<!-- #EndEditable -->
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" href="style.css" type="text/css">
+  ...
+  <script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+  <script src="//cdn.ihoey.com/Hitalk.min.js"></script>
+  ...
 </head>
-
-<style>
-</style>
-
-<body bgcolor=7b7b7b>
-<div>
-
-<p class="head">
-
-<div class="window" style="width: 1980px; height:1460px">
-  <div class="title-bar">
-  <img border="0" src="executable.png" width="16" height="16">
-    <div class="title-bar-text">BBS留言</div>
-        <div class="title-bar-controls">
-      <button aria-label="Minimize"></button>
-      <button aria-label="Maximize"></button>
-      <button aria-label="Close"></button>
-    </div>
-  </div>
-  <div class="window-body">
-
-<div id="container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: 'location.href', // 可选。默认为 location.href  比如我本人的就删除了
-  owner: '290Namo',              //比如我的叫anTtutu
-  repo: 'nikumarubbs.github.io',                 //比如我的叫anTtutu.github.io
-  oauth: {
-    client_id: 'Ov23likMOc9OSUpJCS6H',          //比如我的828***********
-    client_secret: '119c1fb7fc384e07ecf5fd01ba6c4a18e1092054',  //比如我的49e************************
-  },
+<body>
+ new Hitalk({
+  el: '#comment',
+  appId: 'urmXrwszkrp33dEVoQx3Q9P6-gzGzoHsz',
+  appKey: 'vLx34ivhIdPtZMOKr4Un8WpU',
+  placeholder: 'just go go',
+  path: window.location.pathname,
+  avatar: 'mm'
 })
-gitment.render('container')
-</script>
-
-
-
-<br>
-
-</p>
-
-</div>
+  <div id="comment"></div>
 </body>
-</html>
